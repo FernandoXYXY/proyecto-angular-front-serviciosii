@@ -1,0 +1,125 @@
+<div class="col-lg-13" style="background-color: rgb(188, 228, 254); border-radius: 30px; box-shadow: 0px 0px 8px 17px rgba(0,0,0,0.75);" >
+    <form class="content"  (submit) = "consultaProveedor()">
+    <div class="submit-form" >
+  
+         <div class="row">
+            <div class="col-lg-12">
+                <h4 style="text-align: center;">CONSULTA DE PROVEEDOR</h4>
+            </div>
+        </div>
+  
+        <div class="row" style="margin-top: 2%">
+                <label for="dni" class="col-lg-1">Razon Social</label>
+                <div class="col-lg-2">
+                    <input type="text" class="form-control" name="razonsocial" id="razonsocial"  [(ngModel)]= "razonsocial" />
+                </div>
+                <label for="dni" class="col-lg-1">Ruc</label>
+                <div class="col-lg-2">
+                    <input type="text" class="form-control" name="ruc" id="ruc"  [(ngModel)]= "ruc" />
+                </div>
+                <label for="dni" class="col-lg-1">Direccion</label>
+                <div class="col-lg-2">
+                    <input type="text" class="form-control" name="direccion" id="direccion"  [(ngModel)]= "direccion" />
+                </div>
+                <label for="dni" class="col-lg-1">telefono</label>
+                <div class="col-lg-2">
+                    <input type="text" class="form-control" name="telefono" id="telefono"  [(ngModel)]= "telefono" />
+                </div>
+                <label for="dni" class="col-lg-1">Celular</label>
+                <div class="col-lg-2">
+                    <input type="text" class="form-control" name="celular" id="celular"  [(ngModel)]= "celular" />
+                </div>
+                <label for="dni" class="col-lg-1">Contacto</label>
+                <div class="col-lg-2">
+                    <input type="text" class="form-control" name="contacto" id="contacto"  [(ngModel)]= "contacto" />
+                </div>
+                <div class="col-lg-2">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="estado" [(ngModel)]= "estado" checked  name="estado"/>
+                        <label class="custom-control-label" for="estado">Estado</label>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <button class="btn btn-success"  >Filtrar</button>
+                </div>
+         </div>
+
+         <div class="row" style="margin-top: 2%">
+                <div class="col-lg-4">
+                    <label for="departamento">Departamento</label>
+                    <select  id="departamento"  name="departamento" class="form-control" 
+                        (change)= "cargaProvincia()" [(ngModel)]="selDepartamento"  >    
+                        <option value="-1">[Seleccione]</option>
+                        <option *ngFor="let aux of departamentos"    value="{{ aux }}">
+                                  {{ aux }}
+                        </option>    
+                    </select>
+                </div>
+    
+                <div class="col-lg-4">
+                    <label for="provincia">Provincia</label>
+                    <select  id="provincia"  name="provincia"  class="form-control"   
+                         (change)= "cargaDistrito()" [(ngModel)]="selProvincia"    >
+                        <option value="-1">[Seleccione]</option>
+                        <option *ngFor="let aux of provincias"    value="{{ aux }}">
+                            {{ aux }}
+                        </option>    
+       
+                    </select>
+                </div>
+    
+                <div class="col-lg-4">
+                    <label for="distrito">Distrito</label>
+                    <select  id="distrito"   name="distrito"   class="form-control" [(ngModel)]="selDistrito" >
+                        <option value="-1">[Seleccione]</option>
+                        <option *ngFor="let aux of distritos"    value="{{ aux.idUbigeo }}">
+                            {{ aux.distrito }}
+                        </option> 
+                    </select>
+                </div>
+         </div>
+
+         <div class="col-lg-13" style="margin-top: 3%;"><!--class=row-->
+                <table class="table table-hover">
+                    <thead style="background-color: darkblue; ">
+                        <tr style="color: aliceblue; ">
+                            <th>ID</th>
+                            <th>Razon Social</th>
+                            <th style="text-align: center;">Ruc</th>
+                            <th>Direccion</th>
+                            <th>Telefono</th>
+                            <th>Celular</th>
+                            <th>Contacto</th>
+                            <th>Ubigeo</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <tr *ngFor = "let aux of proveedores" >
+                                 <td>{{ aux.idProveedor }}</td>   
+                                 <td>{{ aux.razonsocial }}</td>   
+                                 <td>{{ aux.ruc }}</td>
+                                 <td>{{ aux.direccion }}</td>
+                                 <td>{{ aux.telefono }}</td>
+                                 <td>{{ aux.celular }}</td>
+                                 <td>{{ aux.contacto }}</td>
+
+                                 <td>{{ aux.ubigeo?.departamento }} - {{ aux.ubigeo?.provincia }} - {{ aux.ubigeo?.distrito }}</td>   
+                                 <td>{{ aux.estado==1?'Activo':'Inactivo' }}</td>
+                            </tr>
+
+                    </tbody>
+                       
+
+                </table>
+
+
+         </div>
+        
+
+        </div>
+
+  
+     </form>
+  
+    </div>

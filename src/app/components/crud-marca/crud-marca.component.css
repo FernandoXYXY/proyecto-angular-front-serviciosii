@@ -1,0 +1,11 @@
+.fondo:hover{
+    background-color: #242e42;
+    color: white;
+}
+
+.invalid {
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 90%;
+    color: #dc3545;
+  }

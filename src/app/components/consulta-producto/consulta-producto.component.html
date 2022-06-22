@@ -1,0 +1,115 @@
+<div>
+
+    <form class="content" (submit)="consultaProducto()" >
+
+
+    <div class="submit-form" >
+  
+         <div >
+            <div class="col-lg-12">
+                <h2 class="text-center" style="color: #205cd4">Consulta de Producto </h2>
+            </div>
+        </div>
+  <div>
+        <div class="row" style="margin-top: 2%">
+            
+                
+                <div class="col-lg-2">
+                    <label for="dni" class="col-lg-1">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" id="nombre" [(ngModel)]= "nombre"   />
+                </div>
+   
+                <div class="col-lg-2">
+                    <label for="dni" class="col-lg-1">Serie</label>
+                    <input type="text" class="form-control" name="serie" id="serie" [(ngModel)]= "serie"   />
+                </div>
+                 
+            
+                      
+
+                <div class="col-lg-3">
+                          <label for="Pais">Marca</label>
+                          <select class="registro1 form-control" name="marca" id="marca" [(ngModel)]= "idMarca" > 
+                            <option value="">Seleccione una Marca</option>
+                             <option *ngFor="let aux of Marca" value="{{ aux.idMarca }}">{{ aux.nombre }}</option>
+                         </select>
+                          
+                </div>
+                
+            
+                <div class="col-lg-3">
+                    <label for="Pais">País</label>
+                    <select class="registro1 form-control" name="pais" id="pais" [(ngModel)]= "idPais" > 
+                      <option value="">Seleccione un País</option>
+                       <option *ngFor="let aux of Paises" value="{{ aux.idPais }}">{{ aux.nombre }}</option>
+                   </select>
+
+              </div>
+
+                        <div class="center col-lg-2"  style="margin-top: 3%">
+
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" class="custom-control-input" id="estado" [(ngModel)]= "estado" checked  name="estado"/>
+                                <label class="custom-control-label" for="estado">Estado</label>
+                            </div>
+                        </div>
+                </div>
+            
+            
+            </div>
+
+            <br>
+            <div class="col-lg-2">
+                <button class="btn btn-info"  >Filtrar</button>
+            </div>
+     
+
+         <div class="row" style="margin-top: 3%" >
+                <table class="table table-hover" >
+                    <thead style="background-color: #205cd4">
+                        <tr>
+                            <th class="text-center">ID</th>
+                            <th class="text-center">nombre</th>
+                            <th class="text-center">Serie</th>
+                            <th class="text-center">Durabilidad</th>
+                            <th class="text-center">Fecha Vigencia</th>
+                            <th class="text-center">Stock</th>
+                           <th class="text-center">Precio</th>
+                            <th class="text-center">Marca</th>
+                            <th class="text-center">Pais</th>
+                            <th class="text-center">Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="fondo" *ngFor = "let aux of Producto" >
+                             
+    
+                  <td class="text-center">{{ aux.idProducto }}</td>
+                  <td class="text-center">{{ aux.nombre }}</td>   
+                  <td class="text-center">{{ aux.serie }}</td>  
+                  <td class="text-center">{{aux.durabilidad}}</td> 
+                    <td class="text-center">{{aux.fechaVigencia}}</td> 
+                  <td class="text-center">{{ aux.stock }}</td>
+                  <td class="text-center">{{aux.precio}}</td>
+                  <td class="text-center">{{ aux.marca!.nombre}}</td>  
+                  <td class="text-center">{{ aux.pais!.nombre}}</td> 
+                  <td class="text-center">{{ aux.estado==1?'Activo':'Inactivo' }}</td> 
+                  
+              </tr>
+
+                </tbody>
+                   
+
+            </table>
+
+
+     </div>
+    
+
+    </div>
+
+
+ </form>
+
+</div>
+

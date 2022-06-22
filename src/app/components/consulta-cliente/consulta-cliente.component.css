@@ -1,0 +1,9 @@
+#titulo{
+font-size: 25px;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+#colorfondo:hover{
+    background-color: #c37d92;
+    color: #fff;
+    border-radius: 8px !important;
+}

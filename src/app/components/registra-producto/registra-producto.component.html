@@ -1,0 +1,82 @@
+<div>
+
+    <form class="content"  (ngSubmit)="insertado()">
+    <div class="submit-form" >
+  
+         <div class="row">
+            <div class="col-lg-12">
+                <h6>Registro de Modalidad </h6>
+            </div>
+        </div>
+  
+        <div class="row" style="margin-top: 3%">
+                <div class="col-lg-6">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" name="nombre" id="nombre"  [(ngModel)]="producto.nombre"  />
+                </div>
+            
+                <div class="col-lg-3">
+                    <label for="serie">Serie</label>
+                    <input type="text" class="form-control" name="serie" id="serie" maxlength="10"  [(ngModel)]="producto.serie"/>
+                </div>
+
+                <div class="col-lg-3">
+                        <label for="durabilidad">Durabilidad</label>
+                        <input type="text" class="form-control" name="durabilidad" id="durabilidad" maxlength="10"  [(ngModel)]="producto.durabilidad"  />
+                </div>
+         </div>
+  
+        <div class="row" style="margin-top: 3%">
+        <div class="col-lg-3">
+            <label for="fechavigencia">Fecha de Vigencia</label>
+            <input type="date"    class="form-control" id="fechavigencia"  name="fechavigencia" maxlength="10"  [(ngModel)]="producto.fechaVigencia" />
+        </div>
+    
+        <div class="col-lg-3">
+                <label for="precio">Precio</label>
+                <input type="text"  class="form-control" id="precio"  name="precio" maxlength="10" [(ngModel)]="producto.precio" />
+            </div>
+
+            <div class="col-lg-3">
+                <label for="stock">Stock</label>
+                <input type="text"  class="form-control" id="stock"  name="stock" maxlength="40" [(ngModel)]="producto.stock" />
+            </div>
+
+            <div class="col-lg-3">
+                <label for="marca">Marca</label>
+                <select  id="marca" name="marca" class="form-control" [(ngModel)]="producto.marca!.idMarca">
+                    <option value="-1"> [Seleccione] </option>   
+                    <option *ngFor="let aux of marca" value="{{aux.idMarca}}">
+                        {{aux.nombre}}
+                    </option>
+
+                </select>
+            </div>
+
+            <div class="col-lg-3">
+                <label for="pais">Pais</label>
+                <select  id="pais" name="pais" class="form-control" [(ngModel)]="producto.pais!.idPais">
+                    <option value="-1"> [Seleccione] </option>   
+                    <option *ngFor="let aux of pais" value="{{aux.idPais}}">
+                        {{aux.nombre}}
+                    </option>
+
+                </select>
+            </div>
+
+        </div>
+  
+        <div class="row" style="margin-top: 3%"> 
+                <div class="col-lg-12">
+                    <button class="btn btn-success"  >Enviar</button>
+                </div>
+        </div>
+  
+    
+      </div>
+  
+     </form>
+  
+  
+    </div>
+

@@ -1,0 +1,41 @@
+<div class="formulario">      
+    <h1 style="text-align: center;" id="titulo">Registrar Nueva Sede</h1>
+
+        <form (ngSubmit)="insertaSede()" >       
+              <p>
+                <label for="" class="">Nombre de la Sede<span class="obligatorio">*</span>
+                </label>
+                  <input class="form-control" type="text" name="nombre" id="nombre" required="obligatorio" placeholder="Nombre de la sede" [(ngModel)]="sede.nombre">
+              </p>
+          
+              <p>
+                <label for="" class="">Dirección de la sede<span class="obligatorio">*</span></label>
+                  <input class="form-control" type="text" name="direccion" id="direccion" required="obligatorio" placeholder="Dirección de la sede" [(ngModel)]="sede.direccion">
+              </p>    
+              <p>
+                <label for="" class="">Fecha de Creacion de la sede<span class="obligatorio">*</span>
+                </label>
+                  <input class="form-control" type="date" name="fechaCreacion" id="fechaCreacion" required="obligatorio" placeholder="Fecha de creacion de la sede" [(ngModel)]="sede.fechaCreacion">
+              </p>    
+            
+              <p>
+                <label for="" class="">Codigo Postal
+                  <span class="obligatorio">*</span>
+                </label>
+                  <input class="form-control" name="codigoPostal" id="codigoPostal" type="text" required="obligatorio" placeholder="Codigo Postal" [(ngModel)]="sede.codigoPostal"> 
+              </p>  
+              <p>
+                <label for="" class="">Pais              
+                </label>
+                 
+                <select class="registro1 form-control" name="pais" id="pais" [(ngModel)]="sede.pais!.idPais" > 
+                    <option value="">Seleccione un Pais</option>
+                     <option *ngFor="let aux of Paises" value="{{ aux.idPais }}">{{ aux.nombre }}</option>
+                </select>
+              <button class="btn btn-success">Enviar</button>
+
+        </form>
+  </div> 
+ 
+  
+ 
