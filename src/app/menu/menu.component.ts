@@ -1,22 +1,17 @@
-import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
-import { TokenService } from './security/token.service';
+import { Component, OnInit } from '@angular/core';
+import { TokenService } from '../security/token.service';
+
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-menu',
+  templateUrl: './menu.component.html',
+  styleUrls: ['./menu.component.css']
 })
-
-
-
-export class AppComponent {
-  
-  title = 'Sistema de DAWII - Jacinto';
+export class MenuComponent implements OnInit {
 
   isLogged = false;
 
-  constructor(private tokenService: TokenService, http:HttpClient) {
+  constructor(private tokenService: TokenService) {
     console.log("MenuComponent >>> constructor >>> " + this.tokenService.getToken());
   }
 

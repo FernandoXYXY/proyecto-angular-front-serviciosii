@@ -26,10 +26,13 @@ import { ConsultaPedidoComponent } from './components/consulta-pedido/consulta-p
 import { ConsultaComprobanteComponent } from './components/consulta-comprobante/consulta-comprobante.component';
 import { TransaccionPedidoComponent } from './components/transaccion-pedido/transaccion-pedido.component';
 import { TransaccionComprobanteComponent } from './components/transaccion-comprobante/transaccion-comprobante.component';
-
-
+import { LoginComponent } from './components/auth/login.component';
+import { IndexComponent } from './index/index.component';
 
 const routes: Routes = [
+  {path: 'login', component: LoginComponent },
+  {path: '', redirectTo: 'login', pathMatch:'full' },
+  /* {path: '**', redirectTo: '', pathMatch: 'full' }, */
   {path:"registraCliente", component:RegistraClienteComponent },
   {path:"registraMarca", component:RegistraMarcaComponent },
   {path:"registraProducto", component:RegistraProductoComponent },

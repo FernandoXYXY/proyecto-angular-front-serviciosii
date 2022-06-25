@@ -28,10 +28,15 @@ import { TransaccionPedidoComponent } from './components/transaccion-pedido/tran
 import { ConsultaPedidoComponent } from './components/consulta-pedido/consulta-pedido.component';
 import { ConsultaComprobanteComponent } from './components/consulta-comprobante/consulta-comprobante.component';
 import { DatePipe } from '@angular/common';
-
+import { MenuComponent } from './menu/menu.component';
+import { IndexComponent } from './index/index.component';
+import { LoginComponent } from './components/auth/login.component';
 @NgModule({
   declarations: [
     AppComponent,
+    LoginComponent,
+    MenuComponent,
+    IndexComponent,
     RegistraClienteComponent,
     RegistraMarcaComponent,
     RegistraProductoComponent,
