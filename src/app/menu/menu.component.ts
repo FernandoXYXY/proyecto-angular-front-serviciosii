@@ -26,7 +26,7 @@ export class MenuComponent implements OnInit {
 
   onLogOut(): void {
     this.tokenService.logOut();
-    window.location.reload();
+    window.location.href = 'http://localhost:4200/login'
   }
 
 }

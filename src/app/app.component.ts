@@ -12,26 +12,23 @@ import { TokenService } from './security/token.service';
 
 export class AppComponent {
   
-  title = 'Sistema de DAWII - Jacinto';
-
   isLogged = false;
+  nombreUsuario = "";
+  constructor(private tokenService: TokenService) { }
+  title = 'Daw';
 
-  constructor(private tokenService: TokenService, http:HttpClient) {
-    console.log("MenuComponent >>> constructor >>> " + this.tokenService.getToken());
-  }
 
   ngOnInit() {
-    console.log("MenuComponent >>> ngOnInit >>> " + this.tokenService.getToken());
     if (this.tokenService.getToken()) {
+     
       this.isLogged = true;
+      this.nombreUsuario = this.tokenService.getUserNameComplete()|| '{}';
     } else {
       this.isLogged = false;
+      this.nombreUsuario = '';
     }
+   
   }
 
-  onLogOut(): void {
-    this.tokenService.logOut();
-    window.location.reload();
-  }
 
 }

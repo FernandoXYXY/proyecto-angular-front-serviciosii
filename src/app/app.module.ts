@@ -34,9 +34,6 @@ import { LoginComponent } from './components/auth/login.component';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    MenuComponent,
-    IndexComponent,
     RegistraClienteComponent,
     RegistraMarcaComponent,
     RegistraProductoComponent,
@@ -63,6 +60,10 @@ import { LoginComponent } from './components/auth/login.component';
 
     ConsultaPedidoComponent,
     ConsultaComprobanteComponent,
+
+    LoginComponent,
+    MenuComponent,
+    IndexComponent,
 
   ],
   imports: [

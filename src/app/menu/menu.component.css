@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Allerta+Stencil&display=swap');
+
+
+
+.navbar-nav>li>a{
+  background-color: transparent;
+  font-size: 15px;
+  margin-right:25px;
+  color: #fff;
+  font-family: Verdana;
+  font-style: bold;
+ 
+}
+
+.navbar-toggler {
+    padding: .5rem .50rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: transparent;
+    border: 1px solid white;
+
+    }
+
+    .nav-link{
+
+      color: #fff !important;
+    }
+
+
+
+
+
+.navbar-brand:hover{
+
+  color:#fff;
+  
+}
+
+.navbar-red{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(-30deg, #121f46 0%, #003042 50%,
+   #000000 50%, #2b3439 100%);
+   animation: anim 5s linear infinite;
+  z-index: 1;
+ 
+}
+@keyframes anim {
+  0%{
+    filter: hue-rotate(0deg);
+  }100%{
+    filter: hue-rotate(360deg)
+  }
+  
+}
+.all-show{
+
+  z-index: 10;
+}
