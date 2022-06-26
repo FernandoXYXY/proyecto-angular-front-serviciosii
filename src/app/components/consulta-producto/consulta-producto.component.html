@@ -1,3 +1,4 @@
+<div class="container">
 <div>
 
     <form class="content" (submit)="consultaProducto()" >
@@ -7,7 +8,7 @@
   
          <div >
             <div class="col-lg-12">
-                <h2 class="text-center" style="color: #205cd4">Consulta de Producto </h2>
+                <h2 class="cambio" style="color: #205cd4">Consulta de Producto </h2>
             </div>
         </div>
   <div>
@@ -68,32 +69,32 @@
                 <table class="table table-hover" >
                     <thead style="background-color: #205cd4">
                         <tr>
-                            <th class="text-center">ID</th>
-                            <th class="text-center">nombre</th>
-                            <th class="text-center">Serie</th>
-                            <th class="text-center">Durabilidad</th>
-                            <th class="text-center">Fecha Vigencia</th>
-                            <th class="text-center">Stock</th>
-                           <th class="text-center">Precio</th>
-                            <th class="text-center">Marca</th>
-                            <th class="text-center">Pais</th>
-                            <th class="text-center">Estado</th>
+                            <th class="cambio">ID</th>
+                            <th class="cambio">nombre</th>
+                            <th class="cambio">Serie</th>
+                            <th class="cambio">Durabilidad</th>
+                            <th class="cambio">Fecha Vigencia</th>
+                            <th class="cambio">Stock</th>
+                           <th class="cambio">Precio</th>
+                            <th class="cambio">Marca</th>
+                            <th class="cambio">Pais</th>
+                            <th class="cambio">Estado</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="fondo" *ngFor = "let aux of Producto" >
                              
     
-                  <td class="text-center">{{ aux.idProducto }}</td>
-                  <td class="text-center">{{ aux.nombre }}</td>   
-                  <td class="text-center">{{ aux.serie }}</td>  
-                  <td class="text-center">{{aux.durabilidad}}</td> 
-                    <td class="text-center">{{aux.fechaVigencia}}</td> 
-                  <td class="text-center">{{ aux.stock }}</td>
-                  <td class="text-center">{{aux.precio}}</td>
-                  <td class="text-center">{{ aux.marca!.nombre}}</td>  
-                  <td class="text-center">{{ aux.pais!.nombre}}</td> 
-                  <td class="text-center">{{ aux.estado==1?'Activo':'Inactivo' }}</td> 
+                  <td class="cambio">{{ aux.idProducto }}</td>
+                  <td class="cambio">{{ aux.nombre }}</td>   
+                  <td class="cambio">{{ aux.serie }}</td>  
+                  <td class="cambio">{{aux.durabilidad}}</td> 
+                    <td class="cambio">{{aux.fechaVigencia}}</td> 
+                  <td class="cambio">{{ aux.stock }}</td>
+                  <td class="cambio">{{aux.precio}}</td>
+                  <td class="cambio">{{ aux.marca!.nombre}}</td>  
+                  <td class="cambio">{{ aux.pais!.nombre}}</td> 
+                  <td class="cambio">{{ aux.estado==1?'Activo':'Inactivo' }}</td> 
                   
               </tr>
 
@@ -113,3 +114,4 @@
 
 </div>
 
+</div>

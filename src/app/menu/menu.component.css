@@ -40,9 +40,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(-30deg, #121f46 0%, #003042 50%,
-   #000000 50%, #2b3439 100%);
-   animation: anim 5s linear infinite;
+  background: linear-gradient(-30deg, rgb(1, 32, 132) 0%, rgb(1, 32, 132)  50%,
+  rgb(1, 32, 132)  50%, rgb(1, 32, 132)  100%);
   z-index: 1;
  
 }

@@ -1,5 +1,5 @@
 <div class="container">
-    <h3 class="text-center" style="color: blue; font-family: Georgia, 'Times New Roman', Times, serif; border-bottom: solid 2px blue;" >Crud de Producto</h3>
+    <h3 class="cambio" style="color: blue; font-family: Georgia, 'Times New Roman', Times, serif; border-bottom: solid 2px blue;" >Crud de Producto</h3>
 
     <div class="col-md-23" style="margin-top: 3%">
 
@@ -23,16 +23,16 @@
             <table class="table table-hover" style="border: solid 3px  black ">
                 <thead style="background-color: blue">
                     <tr>
-                        <th class="text-center" style="color: white;">ID</th>
-                        <th class="text-center" style="color: white;">nombre</th>
-                        <th class="text-center" style="color: white;">Serie</th>
-                        <th class="text-center" style="color: white;">Durabilidad</th>
-                        <th class="text-center" style="color: white;">Fecha Vigencia</th>
-                        <th class="text-center" style="color: white;">Stock</th>
-                        <th class="text-center" style="color: white;">Precio</th>
-                        <th class="text-center" style="color: white;">Marca</th>
-                        <th class="text-center" style="color: white;">Pais</th>
-                        <th class="text-center" style="color: white;">Estado</th>
+                        <th class="cambio" style="color: white;">ID</th>
+                        <th class="cambio" style="color: white;">nombre</th>
+                        <th class="cambio" style="color: white;">Serie</th>
+                        <th class="cambio" style="color: white;">Durabilidad</th>
+                        <th class="cambio" style="color: white;">Fecha Vigencia</th>
+                        <th class="cambio" style="color: white;">Stock</th>
+                        <th class="cambio" style="color: white;">Precio</th>
+                        <th class="cambio" style="color: white;">Marca</th>
+                        <th class="cambio" style="color: white;">Pais</th>
+                        <th class="cambio" style="color: white;">Estado</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -41,16 +41,16 @@
                     <tr class="fondo" *ngFor="let aux of productos">
 
 
-                        <td class="text-center">{{ aux.idProducto }}</td>
-                        <td class="text-center">{{ aux.nombre }}</td>
-                        <td class="text-center">{{ aux.serie }}</td>
-                        <td class="text-center">{{aux.durabilidad}}</td>
-                        <td class="text-center">{{aux.fechaVigencia}}</td>
-                        <td class="text-center">{{ aux.stock }}</td>
-                        <td class="text-center">{{aux.precio}}</td>
-                        <td class="text-center">{{ aux.marca!.nombre}}</td>
-                        <td class="text-center">{{ aux.pais!.nombre}}</td>
-                        <td class="text-center">{{ aux.estado==1?'Activo':'Inactivo' }}</td>
+                        <td class="cambio">{{ aux.idProducto }}</td>
+                        <td class="cambio">{{ aux.nombre }}</td>
+                        <td class="cambio">{{ aux.serie }}</td>
+                        <td class="cambio">{{aux.durabilidad}}</td>
+                        <td class="cambio">{{aux.fechaVigencia}}</td>
+                        <td class="cambio">{{ aux.stock }}</td>
+                        <td class="cambio">{{aux.precio}}</td>
+                        <td class="cambio">{{ aux.marca!.nombre}}</td>
+                        <td class="cambio">{{ aux.pais!.nombre}}</td>
+                        <td class="cambio">{{ aux.estado==1?'Activo':'Inactivo' }}</td>
 
                         <td><button type="button" style="width: 90px" class="btn btn-primary btn-sm" data-toggle="modal"
                                 data-target="#idModalActualizar" (click)="buscar(aux)">Editar</button></td>
@@ -77,7 +77,7 @@
         <div class="modal-content">
 
             <div class="modal-header" style="background-color: blue;">
-                <h5 class="modal-title text-center" style=" color: white;" id="exampleModalLabel">Registro de Producto</h5>
+                <h5 class="modal-title cambio" style=" color: white;" id="exampleModalLabel">Registro de Producto</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -90,7 +90,7 @@
 
                         <div class="row">
                             <div class="col-lg-12">
-                                <h6 class="text-center">Registrar Producto </h6>
+                                <h6 class="cambio">Registrar Producto </h6>
                             </div>
                         </div>
 
@@ -224,7 +224,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btn_reg_cerrar"
                             style="width: 100px;">Close</button>
-                        <div class="form-group text-center">
+                        <div class="form-group cambio">
                             <div class="col-lg-12">
                                 <button id="id_reg_registra" class="btn btn-success form-control" style="width: 100px;"
                                     [disabled]="submitted && this.forms.invalid">Registrar</button>
@@ -260,7 +260,7 @@
 
                         <div class="row">
                             <div class="col-lg-12">
-                                <h6 class="text-center">Actualiza Producto </h6>
+                                <h6 class="cambio">Actualiza Producto </h6>
                             </div>
                         </div>
 
@@ -395,7 +395,7 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btn_reg_cerrar2"
                             style="width: 100px;">Close</button>
-                        <div class="form-group text-center">
+                        <div class="form-group cambio">
                             <div class="col-lg-12">
                                 <button id="id_reg_registra" class="btn btn-success form-control" style="width: 100px;"
                                     [disabled]="submitted && this.forms.invalid">Actualizar</button>
