@@ -24,6 +24,7 @@ export class CrudProductoComponent implements OnInit {
     validaStock2: new FormControl('', [Validators.required,Validators.pattern('^([0-9]{1,5})$')]),
     validaMarca2: new FormControl('', [Validators.min(1)]),
     validaPais2: new FormControl('', [Validators.min(1)]),
+    validaEstado: new FormControl('', [Validators.min(0)]),
   });
 
   forms = new FormGroup({
@@ -146,6 +147,11 @@ export class CrudProductoComponent implements OnInit {
           (y) => this.productos = y
     );
 }
+actualizaEstado(aux : Marca){
+  aux.estado = aux.estado == 0? 1 :0;
+  this.productoService.actualizarProducto(aux).subscribe();
+}
+
 
   ngOnInit(): void {
   }
@@ -183,30 +189,29 @@ export class CrudProductoComponent implements OnInit {
  }
 
 
-  eliminar(aux: Producto){
-    Swal.fire({
-      title: '¿Estas seguro de eliminar?',
-      text: "Este cambio no podra revertirse",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      cancelButtonText: 'Cancelar',
-      confirmButtonText: 'Si, eliminar!'
-      }).then((result) => {
+ elimina(aux :Producto){
+  Swal.fire({
+        title: '¿Estás Seguro?',
+        text: "¡No se puede revertir!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, Elimínalo'
+  }).then((result) => {
       if (result.isConfirmed) {
-        this.productoService.eliminarProducto(aux.idProducto).subscribe(x => {
-          Swal.fire('mensaje', x.mensaje, 'success');
-          this.productoService.listaProductoxnombre(this.filtro==""?"todos":this.filtro).subscribe(
-            (y) => this.productos =y
-          );
-
-        });
+            this.productoService.eliminarProducto(aux.idProducto).subscribe(
+              (x) => {
+                Swal.fire('Mensaje',x.mensaje, 'success');
+                this.productoService.listaProductoxnombre(this.filtro==""?"todos":this.filtro).subscribe(
+                        (x) => this.productos = x
+                );
+       
+              } 
+            );
       }
-    })
-
-   }
-
+  })
+}
 
    limpiar(){
     {

@@ -205,4 +205,22 @@ actualiza(){
   }
 }
 }
+limpiar(){
+  this.proveedor = { 
+    idProveedor:0,
+    razonsocial:"",
+    ruc:"",
+    direccion: "",
+    telefono: "",
+    celular: "",
+    contacto: "",
+    estado:1,
+    ubigeo:{
+      idUbigeo: -1,
+      departamento:"-1",
+      provincia:"-1",
+      distrito:"-1",
+  }
+}
+}
 }

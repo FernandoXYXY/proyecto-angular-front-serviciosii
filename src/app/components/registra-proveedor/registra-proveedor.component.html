@@ -1,104 +1,103 @@
 <div class="container">
-<div style="background-color: rgb(188, 228, 254); border-radius: 30px; box-shadow: 0px 0px 8px 17px rgba(0,0,0,0.75);" >
+    <div>
 
-    <form class="content"  (submit)= "registraProveedor()">
-    <div class="submit-form" >
-  
-         <div class="row">
-            <div class="col-lg-12">
-                <h4 style="text-align: center;">REGISTRO DE PROVEEDOR </h4>
+        <form class="content" (submit)="registraProveedor()">
+            <div class="submit-form">
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h4 style="text-align: center;">REGISTRO DE PROVEEDOR </h4>
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 3%;">
+                    <div class="col-lg-3">
+                        <label for="nombre">Razon Social</label>
+                        <input type="text" class="form-control" name="razonsocial" id="razonsocial"
+                            [(ngModel)]="proveedor.razonsocial" />
+                    </div>
+
+                    <div class="col-lg-3">
+                        <label for="dni">RUC</label>
+                        <input type="text" class="form-control" name="ruc" id="ruc" maxlength="11"
+                            [(ngModel)]="proveedor.ruc" />
+                    </div>
+
+                    <div class="col-lg-3">
+                        <label for="dni">Dirección</label>
+                        <input type="text" class="form-control" name="direccion" id="direccion" maxlength="11"
+                            [(ngModel)]="proveedor.direccion" />
+                    </div>
+
+                    <div class="col-lg-3">
+                        <label for="nombre">Teléfono</label>
+                        <input type="text" class="form-control" name="telefono" id="telefono" maxlength="9"
+                            [(ngModel)]="proveedor.telefono" />
+                    </div>
+
+                    <div class="col-lg-3">
+                        <label for="dni">Celular</label>
+                        <input type="text" class="form-control" name="celular" id="celular" maxlength="9"
+                            [(ngModel)]="proveedor.celular" />
+                    </div>
+
+                    <div class="col-lg-3">
+                        <label for="dni">Contacto</label>
+                        <input type="text" class="form-control" name="contacto" id="contacto"
+                            [(ngModel)]="proveedor.contacto" />
+                    </div>
+                </div>
+
+                <div class="row" style="margin-top: 3%">
+
+                    <div class="col-lg-4">
+                        <label for="departamento">Departamento</label>
+                        <select id="departamento" name="departamento" class="form-control"
+                            [(ngModel)]="proveedor.ubigeo!.departamento" (change)="listaProvincia()">
+                            <option value="-1"> [Seleccione] </option>
+                            <option *ngFor="let aux of departamentos" value="{{aux}}">
+                                {{aux}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <label for="provincia">Provincia</label>
+                        <select id="provincia" name="provincia" class="form-control"
+                            [(ngModel)]="proveedor.ubigeo!.provincia" (change)="listaDistrito()">
+                            <option value="-1"> [Seleccione] </option>
+                            <option *ngFor="let aux of provincias" value="{{aux}}">
+                                {{aux}}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <label for="distrito">Distrito</label>
+                        <select id="distrito" name="distrito" class="form-control"
+                            [(ngModel)]="proveedor.ubigeo!.idUbigeo">
+                            <option value="-1"> [Seleccione] </option>
+                            <option *ngFor="let aux of distritos" value="{{aux.idUbigeo}}">
+                                {{aux.distrito}}
+                            </option>
+                        </select>
+                    </div>
+
+
+
+                </div>
+
+                <div class="row" style="margin-top: 5%">
+                    <div class="col-lg-12" style="text-align: center;">
+                        <button class="btn btn-success">Registrar</button>
+                    </div>
+                </div>
+
+
             </div>
-        </div>
-  
-        <div class="row" style="margin-top: 3%;" >
-                <div class="col-lg-3">
-                    <label for="nombre">Razon Social</label>
-                    <input type="text" class="form-control" name="razonsocial" id="razonsocial"  [(ngModel)] = "proveedor.razonsocial" />
-                </div>
-            
-                <div class="col-lg-3">
-                    <label for="dni">RUC</label>
-                    <input type="text" class="form-control" name="ruc" id="ruc" maxlength="11"   [(ngModel)] = "proveedor.ruc" />
-                </div>
 
-                <div class="col-lg-3">
-                    <label for="dni">Direccion</label>
-                    <input type="text" class="form-control" name="direccion" id="direccion" maxlength="11"   [(ngModel)] = "proveedor.direccion" />
-                </div>
-
-                <div class="col-lg-3">
-                    <label for="nombre">Telefono</label>
-                    <input type="text" class="form-control" name="telefono" id="telefono" maxlength="9" [(ngModel)] = "proveedor.telefono" />
-                </div>
-            
-                <div class="col-lg-3">
-                    <label for="dni">Celular</label>
-                    <input type="text" class="form-control" name="celular" id="celular" maxlength="9" [(ngModel)] = "proveedor.celular" />
-                </div>
-
-                <div class="col-lg-3">
-                    <label for="dni">Contacto</label>
-                    <input type="text" class="form-control" name="contacto" id="contacto" [(ngModel)] = "proveedor.contacto" />
-                </div>
-
-                <!--<div class="col-lg-3">
-                    <label for="estado">Estado</label>
-                    <input type="number" class="form-control" name="estado" id="estado"  [(ngModel)] = "proveedor.estado" />
-                </div>
-
-                <div class="col-lg-3">
-                    <label for="fecha">Fecha de Registro </label>
-                    <input type="date" class="form-control" name="fechaRegistro" id="fechaRegistro"   [(ngModel)] = "proveedor.fechaRegistro" />
-                </div>-->
-         </div>
-  
-        <div class="row" style="margin-top: 3%">
-
-            <div class="col-lg-4">
-                <label for="departamento">Departamento</label>
-                <select  id="departamento" name="departamento" class="form-control"  [(ngModel)] = "proveedor.ubigeo!.departamento" (change)="listaProvincia()">
-                    <option value="-1"> [Seleccione] </option>   
-                    <option *ngFor="let aux of departamentos" value="{{aux}}">
-                        {{aux}}
-                    </option>   
-                </select>
-            </div>
-
-            <div class="col-lg-4">
-                <label for="provincia">Provincia</label>
-                <select  id="provincia" name="provincia" class="form-control"  [(ngModel)] = "proveedor.ubigeo!.provincia" (change)="listaDistrito()">
-                    <option value="-1"> [Seleccione] </option>   
-                    <option *ngFor="let aux of provincias" value="{{aux}}">
-                        {{aux}}
-                    </option>   
-                </select>
-            </div>
-
-            <div class="col-lg-4">
-                <label for="distrito">Distrito</label>
-                <select  id="distrito" name="distrito" class="form-control"  [(ngModel)] = "proveedor.ubigeo!.idUbigeo">
-                    <option value="-1"> [Seleccione] </option>   
-                    <option *ngFor="let aux of distritos" value="{{aux.idUbigeo}}">
-                        {{aux.distrito}}
-                    </option>   
-                </select>
-            </div>
+        </form>
 
 
-
-        </div>
-  
-        <div class="row" style="margin-top: 5%"> 
-                <div class="col-lg-12" style="text-align: center;">
-                    <button class="btn btn-success" >Registrar</button>
-                </div>
-        </div>
-  
-    
-      </div>
-  
-     </form>
-  
-  
     </div>
 </div>

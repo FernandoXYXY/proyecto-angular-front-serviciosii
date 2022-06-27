@@ -1,6 +1,5 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
-<div class="container" >
-    <h3 class="cambio mt-4">MANTENIEMIENTO DE RECLAMO</h3>
+<div class="container">
+    <h3 class="titulom mt-4">MANTENIMIENTO DE RECLAMO</h3>
 
     <div class="col-md-23" style="margin-top: 3%">
 
@@ -8,26 +7,29 @@
         <div class="row" style="height: 80px">
             <div class="col-md-4">
                 <label for="tipoReclamo">Tipo de Reclamo</label>
-                    <select  id="tipoReclamo" name="tipoReclamo" class="form-control" [(ngModel)]="idTipoC">
-                        <option value="-1"> [Seleccione Tipo de Reclamo] </option>   
-                        <option *ngFor="let aux2 of tipoReclamo" value="{{aux2.idTipoReclamo}}">{{aux2.descripcion}}</option>
-                    </select>
+                <select id="tipoReclamo" name="tipoReclamo" class="form-control" [(ngModel)]="idTipoC">
+                    <option value="-1"> [Seleccione Tipo de Reclamo] </option>
+                    <option *ngFor="let aux2 of tipoReclamo" value="{{aux2.idTipoReclamo}}">{{aux2.descripcion}}
+                    </option>
+                </select>
             </div>
             <div class="col-md-4">
                 <label for="idEstado">Estado</label>
-                    <select  id="idEstado" name="estado" class="form-control" [(ngModel)]="estadoC">
-                        <option value="-1"> [Seleccione estado] </option>   
-                        <option  value="1">Activo</option>
-                        <option  value="0">Inactivo</option>
-                    </select>
+                <select id="idEstado" name="estado" class="form-control" [(ngModel)]="estadoC">
+                    <option value="-1"> [Seleccione estado] </option>
+                    <option value="1">Activo</option>
+                    <option value="0">Inactivo</option>
+                </select>
             </div>
             <div class="col-md-2">
-                <label for="id_btn_filtrar" class="text-white">#</label>
-                <button type="button" class="btn btn-warning" id="id_btn_filtrar" style="width: 150px" (click)="consulta()">Filtrar</button>
+                <label for="id_btn_filtrar" class="text-white"></label>
+                <button type="button" class="btn btn-warning" id="id_btn_filtrar" style="width: 150px"
+                    (click)="consulta()">Filtrar</button>
             </div>
             <div class="col-md-2">
-                <label for="idBtnRegistrar" class="text-white">#</label>
-                <button  type="button" id="idBtnRegistrar" data-toggle='modal' data-target="#idModalRegistrar" class='btn btn-primary' style="width: 150px">Registrar</button>
+                <label for="idBtnRegistrar" class="text-white"></label>
+                <button type="button" id="idBtnRegistrar" data-toggle='modal' data-target="#idModalRegistrar"
+                    class='btn btn-primary' style="width: 150px" (click)="limpiar()">Registrar</button>
             </div>
         </div>
 
@@ -35,31 +37,39 @@
             <div class="col-md-12">
                 <div class="content">
 
-                    <table id="id_table" class="table table-striped table-bordered mt-4">
+                    <table id="id_table" class="table">
                         <thead>
-                            <tr class="">
+                            <tr class="thead-dark">
                                 <th class="cambio">ID</th>
-                                <th class="cambio">Descripcion</th>
-                                <th class="cambio">Fecha de Registro</th>                            
-                                <th class="cambio">Fecha de Compra (año-mes-dia)</th>                          
+                                <th class="cambio">Descripción</th>
+                                <th class="cambio">Fecha de Registro</th>
+                                <th class="cambio">Fecha de Compra</th>
                                 <th class="cambio">Cliente</th>
                                 <th class="cambio">Tipo Reclamo</th>
                                 <th class="cambio">Estado</th>
-                                <th class="cambio" colspan="2">Operaciones</th>
+                                <th class="cambio" colspan="2">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="fondo"  *ngFor="let aux of reclamos">
-                    
+                            <tr class="fondo" *ngFor="let aux of reclamos">
+
                                 <td class="cambio">{{aux.idReclamo}}</td>
-                                <td >{{aux.descripcion}}</td>   
-                                <td class="cambio">{{aux.fechaRegistro}}</td>                       
-                                <td class="cambio">{{aux.fechaCompra}}</td>            
-                                <td class="cambio">{{aux.cliente?.nombres}} {{aux.cliente?.apellidos}}</td> 
-                                <td class="cambio">{{aux.tipoReclamo?.descripcion}}</td> 
-                                <td class="cambio"><span class="btn {{aux.estado==1?'btn-success':'btn-danger'}}">{{aux.estado==1?'Activo':'Inactivo'}}</span></td> 
-                                <td class="cambio"><button type="button" class="btn btn-secondary" data-toggle='modal' data-target="#idModalActualizar" (click)="buscar(aux)"><i class="bi bi-pencil-square"></i></button></td>
-                                <td class="cambio"><button type="button" class="btn {{aux.estado==1?'btn-danger':'btn-info'}}"  (click)="elimiarOactivar(aux)"> <i class="bi {{aux.estado==1?'bi-trash3':'bi-exclamation-circle'}}"></i></button></td>
+                                <td>{{aux.descripcion}}</td>
+                                <td class="cambio">{{aux.fechaRegistro}}</td>
+                                <td class="cambio">{{aux.fechaCompra}}</td>
+                                <td class="cambio">{{aux.cliente?.nombres}} {{aux.cliente?.apellidos}}</td>
+                                <td class="cambio">{{aux.tipoReclamo?.descripcion}}</td>
+                                <td class="cambio"><span
+                                        class="btn {{aux.estado==1?'btn-success':'btn-danger'}}">{{aux.estado==1?'Activo':'Inactivo'}}</span>
+                                </td>
+                                <td class="cambio"><button type="button" class="btn btn-secondary" data-toggle='modal'
+                                        data-target="#idModalActualizar" (click)="buscar(aux)"><i
+                                            class="bi bi-pencil-square"></i></button></td>
+                                <td class="cambio"><button type="button"
+                                        class="btn {{aux.estado==1?'btn-danger':'btn-info'}}"
+                                        (click)="elimiarOactivar(aux)"> <i
+                                            class="bi {{aux.estado==1?'bi-trash3':'bi-exclamation-circle'}}"></i></button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -70,90 +80,99 @@
     </div>
 
 
-    <div class="modal fade"  id="idModalRegistrar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="idModalRegistrar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
         <div class="modal-dialog" style="max-width: 70%;">
-            <div class="modal-content" >
+            <div class="modal-content">
 
                 <div class="modal-header">
-                    
-                        <h5 class="modal-title" id="exampleModalLabel">REGISTRO DE RECLAMO</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                        </button>
-                    
+
+                    <h5 class="modal-title" id="exampleModalLabel">REGISTRAR RECLAMO</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
                 </div>
-                
+
                 <div class="modal-body">
-                    <form class="content"  (ngSubmit)="insertado()" [formGroup]="forms">
+                    <form class="content" (ngSubmit)="insertado()" [formGroup]="forms">
                         <div class="submit-form">
-                            
+
                             <div class="row" style="margin-top: 3%">
                                 <div class="col-lg-6">
                                     <label for="cliente">Cliente</label>
-                                    <select  id="cliente" name="cliente" class="form-control"  formControlName="validaCliente" [(ngModel)]="ngReclamo.cliente!.idCliente">
-                                        <option value="-1"> [Seleccione Cliente] </option>   
-                                        <option *ngFor="let aux of cliente" value="{{aux.idCliente}}">{{aux.nombres}} {{aux.apellidos}}</option>
+                                    <select id="cliente" name="cliente" class="form-control"
+                                        formControlName="validaCliente" [(ngModel)]="ngReclamo.cliente!.idCliente">
+                                        <option value="-1"> [Seleccione Cliente] </option>
+                                        <option *ngFor="let aux of cliente" value="{{aux.idCliente}}">{{aux.nombres}}
+                                            {{aux.apellidos}}</option>
                                     </select>
                                     <div *ngIf="submitted && forms.controls.validaCliente.errors" class="invalid">
                                         <div *ngIf="forms.controls.validaCliente.errors.min">
-                                                  Seleccionar un cliente es obligatorio
-                                         </div>    
+                                            Seleccionar un cliente es obligatorio
+                                        </div>
                                     </div>
                                 </div>
-                            
+
                                 <div class="col-lg-6">
                                     <label for="tipoReclamo">Tipo de Reclamo</label>
-                                    <select  id="tipoReclamo"  formControlName="validaTipoReclamo" name="tipoReclamo" class="form-control" [(ngModel)]="ngReclamo.tipoReclamo!.idTipoReclamo">
-                                        <option value="-1"> [Seleccione Tipo de Reclamo] </option>   
-                                        <option *ngFor="let aux2 of tipoReclamo" value="{{aux2.idTipoReclamo}}">{{aux2.descripcion}}</option>
+                                    <select id="tipoReclamo" formControlName="validaTipoReclamo" name="tipoReclamo"
+                                        class="form-control" [(ngModel)]="ngReclamo.tipoReclamo!.idTipoReclamo">
+                                        <option value="-1"> [Seleccione Tipo de Reclamo] </option>
+                                        <option *ngFor="let aux2 of tipoReclamo" value="{{aux2.idTipoReclamo}}">
+                                            {{aux2.descripcion}}</option>
                                     </select>
                                     <div *ngIf="submitted && forms.controls.validaTipoReclamo.errors" class="invalid">
                                         <div *ngIf="forms.controls.validaTipoReclamo.errors.min">
-                                                  Seleccionar un tipo de reclamo es obligatorio
-                                         </div>    
+                                            Seleccionar un tipo de reclamo es obligatorio
+                                        </div>
                                     </div>
                                 </div>
-                         </div>
-                  
-                        <div class="row" style="margin-top: 3%">
-                            <div class="col-lg-9">
-                                <label for="descripcion">Descripcion</label>
-                                <input type="text"  class="form-control" formControlName="validaDescripcion" id="descripcion"  name="descripcion"  [(ngModel)]="ngReclamo.descripcion"  />
-                                <div *ngIf="submitted && forms.controls.validaDescripcion.errors" class="invalid">
-                                    <div *ngIf="forms.controls.validaDescripcion.errors.required">
-                                             Ingrese la descripción del reclamo
-                                    </div>  
-                                    <div *ngIf="forms.controls.validaDescripcion.errors.pattern">
-                                             Solo letras y números (Min: 4 y Max: 255 caracteres)
-                                     </div>    
-                               </div>
                             </div>
-                            
-                            <div class="col-lg-3">
-                                <label for="fechaCompra">Fecha de compra</label>
-                                <input type="date"  class="form-control" formControlName="validaFecha" id="fechaCompra"  name="fechaCompra"  [(ngModel)]="ngReclamo.fechaCompra" />
-                                <div *ngIf="submitted && forms.controls.validaFecha.errors" class="invalid">
-                                    <div *ngIf="forms.controls.validaFecha.errors.required">
-                                             Seleccionar una fecha es obligatorio
-                                    </div>     
-                               </div>
-                            </div>
-                        
-                        </div>
-                  
 
-                        </div> 
+                            <div class="row" style="margin-top: 3%">
+                                <div class="col-lg-9">
+                                    <label for="descripcion">Descripción</label>
+                                    <input type="text" class="form-control" formControlName="validaDescripcion"
+                                        id="descripcion" name="descripcion" placeholder="Ingrese descripción" [(ngModel)]="ngReclamo.descripcion" />
+                                    <div *ngIf="submitted && forms.controls.validaDescripcion.errors" class="invalid">
+                                        <div *ngIf="forms.controls.validaDescripcion.errors.required">
+                                            Ingrese la descripción del reclamo
+                                        </div>
+                                        <div *ngIf="forms.controls.validaDescripcion.errors.pattern">
+                                            Solo letras y números (Min: 4 y Max: 255 caracteres)
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3">
+                                    <label for="fechaCompra">Fecha de compra</label>
+                                    <input type="date" class="form-control" formControlName="validaFecha"
+                                        id="fechaCompra" name="fechaCompra" [(ngModel)]="ngReclamo.fechaCompra" />
+                                    <div *ngIf="submitted && forms.controls.validaFecha.errors" class="invalid">
+                                        <div *ngIf="forms.controls.validaFecha.errors.required">
+                                            Seleccionar una fecha es obligatorio
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
                         <div class="modal-footer mt-4">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btn_reg_cerrar" style="width: 100px;" (click)="limpiar()">Close</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btn_reg_cerrar"
+                                style="width: 100px;">Cerrar</button>
                             <div class="form-group cambio">
                                 <div class="col-lg-12">
-                                    <button id="id_reg_registra"  class="btn btn-success form-control"style="width: 100px;"  [disabled]="submitted && this.forms.invalid">Registrar</button>
+                                    <button id="id_reg_registra" class="btn btn-success form-control"
+                                        style="width: 100px;"
+                                        [disabled]="submitted && this.forms.invalid">Registrar</button>
                                 </div>
                             </div>
                         </div>
 
-               
+
                     </form>
                 </div>
 
@@ -163,91 +182,100 @@
         </div>
     </div>
 
-     <div class="modal fade"  id="idModalActualizar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="idModalActualizar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 
         <div class="modal-dialog" style="max-width: 70%;">
-            <div class="modal-content" >
+            <div class="modal-content">
 
                 <div class="modal-header">
-                    
-                        <h5 class="modal-title" id="exampleModalLabel">ACTUALIZAR RECLAMO</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                        </button>
-                    
+
+                    <h5 class="modal-title" id="exampleModalLabel">ACTUALIZAR RECLAMO</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
                 </div>
-                
+
                 <div class="modal-body">
-                    <form class="content"  (ngSubmit)="actualiza()" [formGroup]="forms2">
+                    <form class="content" (ngSubmit)="actualiza()" [formGroup]="forms2">
                         <div class="submit-form">
-                            
+
                             <div class="row" style="margin-top: 3%">
                                 <div class="col-lg-6">
                                     <label for="cliente2">Cliente</label>
-                                    <select  id="cliente2" name="cliente2" class="form-control"  formControlName="validaCliente2" [(ngModel)]="ngReclamo.cliente!.idCliente">
-                                        <option value="-1"> [Seleccione Cliente] </option>   
-                                        <option *ngFor="let aux of cliente" value="{{aux.idCliente}}">{{aux.nombres}} {{aux.apellidos}}</option>
+                                    <select id="cliente2" name="cliente2" class="form-control"
+                                        formControlName="validaCliente2" [(ngModel)]="ngReclamo.cliente!.idCliente">
+                                        <option value="-1"> [Seleccione Cliente] </option>
+                                        <option *ngFor="let aux of cliente" value="{{aux.idCliente}}">{{aux.nombres}}
+                                            {{aux.apellidos}}</option>
                                     </select>
                                     <div *ngIf="submitted && forms2.controls.validaCliente2.errors" class="invalid">
                                         <div *ngIf="forms2.controls.validaCliente2.errors.min">
-                                                  Seleccionar un cliente es obligatorio
-                                         </div>    
+                                            Seleccionar un cliente es obligatorio
+                                        </div>
                                     </div>
                                 </div>
-                            
+
                                 <div class="col-lg-6">
                                     <label for="tipoReclamo2">Tipo de Reclamo</label>
-                                    <select  id="tipoReclamo2"  formControlName="validaTipoReclamo2" name="tipoReclamo2" class="form-control" [(ngModel)]="ngReclamo.tipoReclamo!.idTipoReclamo">
-                                        <option value="-1"> [Seleccione Tipo de Reclamo] </option>   
-                                        <option *ngFor="let aux2 of tipoReclamo" value="{{aux2.idTipoReclamo}}">{{aux2.descripcion}}</option>
+                                    <select id="tipoReclamo2" formControlName="validaTipoReclamo2" name="tipoReclamo2"
+                                        class="form-control" [(ngModel)]="ngReclamo.tipoReclamo!.idTipoReclamo">
+                                        <option value="-1"> [Seleccione Tipo de Reclamo] </option>
+                                        <option *ngFor="let aux2 of tipoReclamo" value="{{aux2.idTipoReclamo}}">
+                                            {{aux2.descripcion}}</option>
                                     </select>
                                     <div *ngIf="submitted && forms2.controls.validaTipoReclamo2.errors" class="invalid">
                                         <div *ngIf="forms2.controls.validaTipoReclamo2.errors.min">
-                                                  Seleccionar un tipo de reclamo es obligatorio
-                                         </div>    
+                                            Seleccionar un tipo de reclamo es obligatorio
+                                        </div>
                                     </div>
                                 </div>
-                         </div>
-                  
-                        <div class="row" style="margin-top: 3%">
-                            <div class="col-lg-9">
-                                <label for="descripcion2">Descripcion</label>
-                                <input type="text"  class="form-control" formControlName="validaDescripcion2" id="descripcion2"  name="descripcion2"  [(ngModel)]="ngReclamo.descripcion"  />
-                                <div *ngIf="submitted && forms2.controls.validaDescripcion2.errors" class="invalid">
-                                    <div *ngIf="forms2.controls.validaDescripcion2.errors.required">
-                                             Ingrese la descripción del reclamo
-                                    </div>  
-                                    <div *ngIf="forms2.controls.validaDescripcion2.errors.pattern">
-                                             Solo letras y números (Min: 4 y Max: 255 caracteres)
-                                     </div>    
-                               </div>
                             </div>
-                            
-                            <div class="col-lg-3">
-                                <label for="fechaCompra2">Fecha de compra</label>
-                                <input type="date"  class="form-control" formControlName="validaFecha2" id="fechaCompra2"  name="fechaCompra2"  [(ngModel)]="ngReclamo.fechaCompra" />
-                                <div *ngIf="submitted && forms2.controls.validaFecha2.errors" class="invalid">
-                                    <div *ngIf="forms2.controls.validaFecha2.errors.required">
-                                             Seleccionar una fecha es obligatorio
-                                    </div>
-                                       
-                               </div>
-                            </div>
-                        
-                        </div>
-                  
 
-                        </div> 
+                            <div class="row" style="margin-top: 3%">
+                                <div class="col-lg-9">
+                                    <label for="descripcion2">Descripción</label>
+                                    <input type="text" class="form-control" formControlName="validaDescripcion2"
+                                        id="descripcion2" name="descripcion2" [(ngModel)]="ngReclamo.descripcion" />
+                                    <div *ngIf="submitted && forms2.controls.validaDescripcion2.errors" class="invalid">
+                                        <div *ngIf="forms2.controls.validaDescripcion2.errors.required">
+                                            Ingrese la descripción del reclamo
+                                        </div>
+                                        <div *ngIf="forms2.controls.validaDescripcion2.errors.pattern">
+                                            Solo letras y números (Min: 4 y Max: 255 caracteres)
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-3">
+                                    <label for="fechaCompra2">Fecha de compra</label>
+                                    <input type="date" class="form-control" formControlName="validaFecha2"
+                                        id="fechaCompra2" name="fechaCompra2" [(ngModel)]="ngReclamo.fechaCompra" />
+                                    <div *ngIf="submitted && forms2.controls.validaFecha2.errors" class="invalid">
+                                        <div *ngIf="forms2.controls.validaFecha2.errors.required">
+                                            Seleccionar una fecha es obligatorio
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
                         <div class="modal-footer mt-4">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btn_act_cerrar" style="width: 100px;" (click)="limpiar()">Close</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btn_act_cerrar"
+                                style="width: 100px;">Cerrar</button>
                             <div class="form-group cambio">
                                 <div class="col-lg-12">
-                                    <button id="id_act_actualiza"  class="btn btn-success form-control"style="width: 100px;"  [disabled]="submitted && this.forms2.invalid">Actualizar</button>
+                                    <button id="id_act_actualiza" class="btn btn-success form-control"
+                                        style="width: 100px;"
+                                        [disabled]="submitted && this.forms2.invalid">Actualizar</button>
                                 </div>
                             </div>
                         </div>
 
-               
+
                     </form>
                 </div>
 
@@ -256,6 +284,3 @@
             </div>
         </div>
     </div>
-
-   
-

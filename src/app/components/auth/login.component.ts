@@ -62,6 +62,7 @@ export class LoginComponent implements OnInit {
           console.log("onLogin() >> setUserName >>> " +  this.tokenService.getUserName());
           console.log("onLogin() >> setUserNameComplete >>> " +  this.tokenService.getUserNameComplete());
           console.log("onLogin() >> idUsuario >>> " +  this.tokenService.getUserId());
+          
 
       },
       (err:any) => {

@@ -40,7 +40,7 @@ this.PaisService.listaPais().subscribe(x => this.Paises = x);
  
 
 consultaMarca(){
-  this.marcaService.listarMarca(this.nombre, this.descripcion, this.certificado, this.selPais, this.estado?1:2).subscribe(
+  this.marcaService.listarMarca(this.nombre, this.descripcion, this.certificado, this.selPais, this.estado?1:0).subscribe(
         (x) => {
             this.Marca = x.lista;
             

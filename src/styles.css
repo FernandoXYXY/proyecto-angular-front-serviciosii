@@ -1,1 +1,41 @@
-/* You can add global styles to this file, and also import other style files */
+
+body{
+    background-image:url("https://wallpapercave.com/wp/YHSuCPt.jpg");
+    /* background-image:url("https://www.pixelstalk.net/wp-content/uploads/images6/The-latest-4K-Mac-Background.jpg"); */
+  /*   https://www.pixelstalk.net/wp-content/uploads/2016/04/Lake-in-new-zealand-wallpapers-2880x1800.jpg */
+/*   https://www.pixelstalk.net/wp-content/uploads/2016/04/Macbook-pro-retina-wallpaper-HD-ocean.jpg
+        https://www.pixelstalk.net/wp-content/uploads/images2/Retina_Wallpapers_HD_for_Desktop.jpg*/
+   background-size: cover;
+}
+.table{
+    background-color: #A8DCD9;
+}
+.table:hover{
+    color: #000;
+}
+.container{
+    margin-top: 2%;
+    margin-bottom: 2%;
+    background-color: #fff;
+    border-radius: 10px;
+    padding:3%;
+}
+.container2{
+    width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto
+}
+.modal-header{
+    background-color: darkblue; color: white;
+}
+@media (min-width:576px){.container2{max-width:540px}}
+@media (min-width:768px){.container2{max-width:720px}}
+@media (min-width:992px){.container2 {max-width:960px}}
+@media (min-width:1200px){.container2 {max-width:1140px}}.container2-fluid{width:100%;padding-right:15px;padding-left:15px;margin-right:auto;margin-left:auto}
+
+.colorfondo:hover{
+    background-color: #c37d92;
+    color: #fff;
+    border-radius: 8px !important;
+}
+.titulom{
+    text-align: center;
+}

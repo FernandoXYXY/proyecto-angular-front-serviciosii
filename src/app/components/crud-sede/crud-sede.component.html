@@ -1,5 +1,5 @@
 <div class="container">
-    <h5>Crud de Sede</h5>
+    <h3 class="titulom mt-4">MANTENIMIENTO DE SEDE</h3>
 
     <div class="col-md-23" style="margin-top: 3%">
 
@@ -10,11 +10,12 @@
                     placeholder="Ingrese el nombre" type="text" maxlength="30" />
             </div>
             <div class="col-md-2">
-                <button type="button" class="btn btn-primary" id="id_btn_filtrar" style="width: 150px"
+                <button type="button" class="btn btn-warning" id="id_btn_filtrar" style="width: 150px"
                     (click)="consultaSede()">Filtrar</button>
             </div>
             <div class="col-md-2">
-                <button type="button" data-toggle='modal' data-target="#idModalRegistrar" class='btn btn-success' (click)="limpiar()" style="width: 150px">Registrar</button>
+                <button type="button" data-toggle='modal' data-target="#idModalRegistrar" class='btn btn-primary'
+                    (click)="limpiar()" style="width: 150px">Registrar</button>
             </div>
         </div>
 
@@ -22,39 +23,42 @@
             <div class="col-md-12">
                 <div class="content">
 
-                    <table id="id_table" class="table table-striped table-bordered">
-                        <thead>
+                    <table id="id_table" class="table">
+                        <thead class="thead-dark">
                             <tr>
-                                <th style="width: 5%">#</th>
-                                <th style="width: 30%">Nombre</th>
-                                <th style="width: 30%">Direccion</th>
-                                <th style="width: 10%">Código Postal</th>
-                                <th style="width: 31%">País</th>
-                                <th style="width: 7%">estado</th>
-                                <th style="width: 7%">Act. Estado</th>
+                                <th>#</th>
+                                <th>Nombre</th>
+                                <th>Dirección</th>
+                                <th>Código Postal</th>
+                                <th>País</th>
+                                <th>Estado</th>
+                                <th colspan="2">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let aux of sedes">
+                            <tr class="fondo" *ngFor="let aux of sedes">
                                 <td>{{ aux.idSede }}</td>
                                 <td>{{ aux.nombre }}</td>
                                 <td>{{ aux.direccion }}</td>
                                 <td>{{ aux.codigoPostal }}</td>
                                 <td>{{ aux.pais?.nombre }}</td>
-                                <td>{{ aux.estado == 1 ? "Activo" : "Inactivo"}}</td>
                                 <td>
                                     <div class="custom-control custom-switch">
+
                                         <input type="checkbox" class="custom-control-input"
                                             id="idEstado_{{ aux.idSede }}" [checked]="aux.estado==1?true:false"
                                             name="estado" (change)="actualizaEstado(aux)" />
-                                        <label class="custom-control-label" for="idEstado_{{ aux.idSede }}"></label>
+
+                                        <label class="custom-control-label" for="idEstado_{{ aux.idSede }}"> {{
+                                            aux.estado == 1 ? "Activo" : "Inactivo"}}</label>
                                     </div>
                                 </td>
-                                <td><button type="button" style="width: 90px" class="btn btn-primary btn-sm"
-                                        data-toggle="modal" data-target="#idModalActualizar"
-                                        (click)="buscar(aux)">Editar</button></td>
-                                <td><button type="button" style="width: 90px" class="btn btn-danger btn-sm"
-                                        (click)="elimina(aux)">Eliminar</button></td>
+
+                                <td class="cambio"><button type="button" class="btn btn-secondary" data-toggle='modal'
+                                        data-target="#idModalActualizar" (click)="buscar(aux)"><i
+                                            class="bi bi-pencil-square"></i></button></td>
+                                <td class="cambio"><button type="button" class="btn btn-danger" (click)="elimina(aux)">
+                                        <i class="bi bi-trash3"></i></button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -71,7 +75,7 @@
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Registro de cliente</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Registrar Sede</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -110,14 +114,14 @@
                                 </div>
 
                                 <div class="col-lg-4">
-                                    <label for="id_reg_dni">Codigó Postal</label>
-                                    <input formControlName="validaCodigoPostal" [(ngModel)]="sede.codigoPostal" type="number"
-                                        placeholder="Ingrese el Codigó Postal" class="form-control" name="codigoPostal"
-                                        id="id_reg_dni" maxlength="8" />
+                                    <label for="id_reg_dni">Código Postal</label>
+                                    <input formControlName="validaCodigoPostal" [(ngModel)]="sede.codigoPostal"
+                                        type="number" placeholder="Ingrese el Codigó Postal" class="form-control"
+                                        name="codigoPostal" id="id_reg_dni" maxlength="8" />
                                     <div *ngIf="submitted && formsRegistra.controls.validaCodigoPostal.errors"
                                         class="invalid">
                                         <ul>
-                                            <li>El Codigó Postal es obligatorio</li>
+                                            <li>El Código Postal es obligatorio</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -127,7 +131,7 @@
                             <div class="row" style="margin-top: 5%">
 
                                 <div class="col-lg-4">
-                                    <label for="id_reg_departamento">Pais</label>
+                                    <label for="id_reg_departamento">País</label>
                                     <select formControlName="validaPais" [(ngModel)]="sede.pais!.idPais"
                                         id="id_reg_departamento" name="idPais" class="form-control">
                                         <option value="-1"> [Seleccione] </option>
@@ -164,8 +168,8 @@
     <div class="modal fade" id="idModalActualizar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="max-width: 80%;">
             <div class="modal-content">
-                <div class="modal-header" style="background-color: #011936; ">
-                    <h5 class="modal-title" id="exampleModalLabel">Actualización de Sede</h5>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Actualizar Sede</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -203,14 +207,14 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
-                                    <label for="id_reg_dni">Codigó Postal</label>
-                                    <input formControlName="validaCodigoPostal" [(ngModel)]="sede.codigoPostal" type="number"
-                                        placeholder="Ingrese el Codigó Postal" class="form-control" name="codigoPostal"
-                                        id="id_reg_dni" maxlength="8" />
+                                    <label for="id_reg_dni">Código Postal</label>
+                                    <input formControlName="validaCodigoPostal" [(ngModel)]="sede.codigoPostal"
+                                        type="number" placeholder="Ingrese el Codigó Postal" class="form-control"
+                                        name="codigoPostal" id="id_reg_dni" maxlength="8" />
                                     <div *ngIf="submitted && formsActualiza.controls.validaCodigoPostal.errors"
                                         class="invalid">
                                         <ul>
-                                            <li>El Codigó Postal es obligatorio</li>
+                                            <li>El Código Postal es obligatorio</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -218,7 +222,7 @@
 
                             <div class="row" style="margin-top: 5%">
                                 <div class="col-lg-4">
-                                    <label for="id_reg_departamento">Pais</label>
+                                    <label for="id_reg_departamento">País</label>
                                     <select formControlName="validaPais" [(ngModel)]="sede.pais!.idPais"
                                         id="id_reg_departamento" name="idPais" class="form-control">
                                         <option value="-1"> [Seleccione] </option>
@@ -238,13 +242,14 @@
                                         id="id_reg_departamento" name="estado" class="form-control">
                                         <option value="-1"> [Seleccione] </option>
                                         <option value="0">
-                                           Inactivo
+                                            Inactivo
                                         </option>
                                         <option value="1">
                                             Activo
                                         </option>
                                     </select>
-                                    <div *ngIf="submitted && formsActualiza.controls.validaEstado.errors" class="invalid">
+                                    <div *ngIf="submitted && formsActualiza.controls.validaEstado.errors"
+                                        class="invalid">
                                         <ul>
                                             <li>La sede tiene que estar activa para actualizar</li>
                                         </ul>
@@ -253,7 +258,7 @@
                             </div>
 
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal"  
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal"
                                     id="btn_act_cerrar">Cerrar</button>
                                 <div class="form-group cambio">
                                     <div class="col-lg-12">

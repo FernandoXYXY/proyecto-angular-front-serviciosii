@@ -1,6 +1,5 @@
 <div class="container">
-    <h3 class="cambio" style="color: blue; font-family: Georgia, 'Times New Roman', Times, serif; border-bottom: solid 2px blue;" >Crud de Producto</h3>
-
+    <h3 class="titulom mt-4">MANTENIMIENTO DE PRODUCTO</h3>
     <div class="col-md-23" style="margin-top: 3%">
 
 
@@ -10,31 +9,31 @@
                     placeholder="Ingrese el nombre" type="text" maxlength="30" />
             </div>
             <div class="col-md-2">
-                <button type="button" class="btn btn-primary" id="id_btn_filtrar" style="width: 150px"
+                <button type="button" class="btn btn-warning" id="id_btn_filtrar" style="width: 150px"
                     (click)="consulta()">Filtrar</button>
             </div>
             <div class="col-md-2">
-                <button type="button" data-toggle='modal' data-target="#idModalRegistrar" class='btn btn-success'
-                    style="width: 150px">Registrar</button>
+                <button type="button" data-toggle='modal' data-target="#idModalRegistrar" class='btn btn-primary'
+                    style="width: 150px; color: white;" (click)="limpiar();">Registrar</button>
             </div>
         </div>
 
         <div class="row" style="margin-top: 3%">
-            <table class="table table-hover" style="border: solid 3px  black ">
-                <thead style="background-color: blue">
-                    <tr>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr class="fondo">
                         <th class="cambio" style="color: white;">ID</th>
-                        <th class="cambio" style="color: white;">nombre</th>
+                        <th class="cambio" style="color: white;">Nombre</th>
                         <th class="cambio" style="color: white;">Serie</th>
-                        <th class="cambio" style="color: white;">Durabilidad</th>
-                        <th class="cambio" style="color: white;">Fecha Vigencia</th>
+                        <th class="cambio" style="color: white;">Fecha de Vigencia</th>
                         <th class="cambio" style="color: white;">Stock</th>
                         <th class="cambio" style="color: white;">Precio</th>
                         <th class="cambio" style="color: white;">Marca</th>
-                        <th class="cambio" style="color: white;">Pais</th>
+                        <th class="cambio" style="color: white;">País</th>
                         <th class="cambio" style="color: white;">Estado</th>
+                        <th>Switch</th>
                         <th></th>
-                        <th></th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -44,18 +43,27 @@
                         <td class="cambio">{{ aux.idProducto }}</td>
                         <td class="cambio">{{ aux.nombre }}</td>
                         <td class="cambio">{{ aux.serie }}</td>
-                        <td class="cambio">{{aux.durabilidad}}</td>
                         <td class="cambio">{{aux.fechaVigencia}}</td>
                         <td class="cambio">{{ aux.stock }}</td>
                         <td class="cambio">{{aux.precio}}</td>
                         <td class="cambio">{{ aux.marca!.nombre}}</td>
                         <td class="cambio">{{ aux.pais!.nombre}}</td>
-                        <td class="cambio">{{ aux.estado==1?'Activo':'Inactivo' }}</td>
+                        <td>
+                            <div class="custom-control custom-switch">
 
-                        <td><button type="button" style="width: 90px" class="btn btn-primary btn-sm" data-toggle="modal"
-                                data-target="#idModalActualizar" (click)="buscar(aux)">Editar</button></td>
-                        <td><button type="button" style="width: 90px" class="btn btn-danger btn-sm" data-toggle="modal" (click)="eliminar(aux)" >Eliminar</button></td>
+                                <input type="checkbox" class="custom-control-input" id="idEstado_{{ aux.idProducto }}"
+                                    [checked]="aux.estado==1?true:false" name="estado"
+                                    (change)="actualizaEstado(aux)" />
 
+                                <label class="custom-control-label" for="idEstado_{{ aux.idProducto }}"> {{ aux.estado
+                                    == 1 ? "Activo" : "Inactivo"}}</label>
+                            </div>
+                        </td>
+                        <td class="cambio"><button type="button" class="btn btn-secondary" data-toggle='modal'
+                                data-target="#idModalActualizar" (click)="buscar(aux)"><i
+                                    class="bi bi-pencil-square"></i></button></td>
+                        <td class="cambio"><button type="button" class="btn btn-danger" (click)="elimina(aux)"> <i
+                                    class="bi bi-trash3"></i></button></td>
                     </tr>
 
 
@@ -76,8 +84,8 @@
     <div class="modal-dialog" style="max-width: 70%;">
         <div class="modal-content">
 
-            <div class="modal-header" style="background-color: blue;">
-                <h5 class="modal-title cambio" style=" color: white;" id="exampleModalLabel">Registro de Producto</h5>
+            <div class="modal-header">
+                <h5 class="modal-title" style="color: white;" id="exampleModalLabel">Registrar Producto</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -88,11 +96,7 @@
                 <form class="content" (ngSubmit)="insertado()" [formGroup]="forms">
                     <div class="submit-form">
 
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <h6 class="cambio">Registrar Producto </h6>
-                            </div>
-                        </div>
+
 
                         <div class="row" style="margin-top: 3%">
                             <div class="col-lg-6">
@@ -201,7 +205,7 @@
                             </div>
 
                             <div class="col-lg-3">
-                                <label for="pais">Pais</label>
+                                <label for="pais">País</label>
                                 <select id="pais" name="pais" class="form-control" [(ngModel)]="producto.pais!.idPais"
                                     formControlName="validaPais">
 
@@ -223,7 +227,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btn_reg_cerrar"
-                            style="width: 100px;">Close</button>
+                            style="width: 100px;">Cerrar</button>
                         <div class="form-group cambio">
                             <div class="col-lg-12">
                                 <button id="id_reg_registra" class="btn btn-success form-control" style="width: 100px;"
@@ -246,8 +250,8 @@
     <div class="modal-dialog" style="max-width: 70%;">
         <div class="modal-content">
 
-            <div class="modal-header" style="background-color: blue;">
-                <h5 class="modal-title" style="color: white;" id="exampleModalLabel">Actualizar de Producto</h5>
+            <div class="modal-header">
+                <h5 class="modal-title" style="color: white;" id="exampleModalLabel">Actualizar Producto</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -257,13 +261,6 @@
 
                 <form class="content" (ngSubmit)="actualizar()" [formGroup]="formsActualiza">
                     <div class="submit-form">
-
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <h6 class="cambio">Actualiza Producto </h6>
-                            </div>
-                        </div>
-
                         <div class="row" style="margin-top: 3%">
                             <div class="col-lg-6">
                                 <label for="nombre">Nombre</label>
@@ -372,7 +369,7 @@
                             </div>
 
                             <div class="col-lg-3">
-                                <label for="pais">Pais</label>
+                                <label for="pais">País</label>
                                 <select id="pais" name="pais" class="form-control" [(ngModel)]="producto.pais!.idPais"
                                     formControlName="validaPais2">
 
@@ -394,7 +391,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btn_reg_cerrar2"
-                            style="width: 100px;">Close</button>
+                            style="width: 100px;">Cerrar</button>
                         <div class="form-group cambio">
                             <div class="col-lg-12">
                                 <button id="id_reg_registra" class="btn btn-success form-control" style="width: 100px;"

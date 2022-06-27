@@ -1,4 +1,4 @@
-    <div class="container">
+<div class="container">
     <div>
 
         <form class="content" (submit)="consultaCliente()">
@@ -8,7 +8,7 @@
 
                 <div class="row">
                     <div class="col-lg-12">
-                        <marquee id="titulo">Consulta de Cliente</marquee>
+                        <h4 style="text-align: center;">CONSULTA CLIENTE </h4>
                     </div>
                 </div>
 
@@ -84,7 +84,7 @@
                 </div>
                 <div class="row" style="margin-top: 3%">
                     <table class="table">
-                        <thead style="background-color: #242e42; color: white;">
+                        <thead class="thead-dark">
                             <tr>
                                 <th>ID</th>
                                 <th>Nombres</th>
@@ -97,7 +97,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr id="colorfondo" *ngFor="let aux of clientes">
+                            <tr class="colorfondo" *ngFor="let aux of clientes">
                                 <td>{{ aux.idCliente }}</td>
                                 <td>{{ aux.nombres }}</td>
                                 <td>{{ aux.apellidos }}</td>

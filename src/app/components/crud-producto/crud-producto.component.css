@@ -14,8 +14,8 @@
     color: #dc3545;
 }
 
-.colorfondo:hover{
-    background-color: #7FBEEB;
-    color: #fff;
-    border-radius: 8px !important;
+.fondo:hover{
+    background-color: #242e42;
+    color: white;
 }
+

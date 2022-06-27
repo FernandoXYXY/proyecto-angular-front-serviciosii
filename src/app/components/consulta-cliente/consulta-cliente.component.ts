@@ -41,7 +41,7 @@ constructor(private ubigeoService: UbigeoService, private clienteService:Cliente
 
 consultaCliente(){
   this.clienteService.listarCliente(this.nombres, this.apellidos, this.dni, this.correo, this.direccion,
-    this.selDistrito, this.estado?1:2).subscribe(
+    this.selDistrito, this.estado?1:0).subscribe(
         (x) => {
             this.clientes = x.lista;
         }

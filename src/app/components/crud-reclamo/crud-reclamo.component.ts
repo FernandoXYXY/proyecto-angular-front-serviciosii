@@ -81,11 +81,7 @@ export class CrudReclamoComponent implements OnInit {
     this.reclamoService.consultaReclamo(this.estadoC, this.fechaC, this.idClienteC, this.idTipoC).subscribe(
       (x) => {
         this.reclamos = x.lista;
-        Swal.fire(
-          'Resultado de busqueda:',
-          x.mensaje,
-          'info'
-        )
+       
       }
     );
   }
