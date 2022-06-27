@@ -37,4 +37,13 @@ export class ProveedorService {
   actualizaProveedor(aux :Proveedor): Observable<any>{
       return this.http.put<any>(baseUrlProveedor+"/actualizaProveedor", aux);
   }
+
+  eliminarProveedor(id: any): Observable<any>{
+    return this.http.delete(baseUrlProveedor + "/eliminaProveedor/" + id);
+  }
+
+  listaProveedorxnombre(filtro:string):Observable<Proveedor[]>{
+    return this.http.get<Proveedor[]>(baseUrlProveedor+"/listaProveedorPorRazonLike/"+filtro);
+  
+   }
 }

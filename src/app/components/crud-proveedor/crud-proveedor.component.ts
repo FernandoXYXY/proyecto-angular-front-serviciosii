@@ -4,6 +4,7 @@ import { Ubigeo } from 'src/app/models/ubigeo.model';
 import { ProveedorService } from 'src/app/services/proveedor.service';
 import { UbigeoService } from 'src/app/services/ubigeo.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-crud-proveedor',
@@ -223,4 +224,28 @@ limpiar(){
   }
 }
 }
+elimina(aux :Proveedor){
+  Swal.fire({
+        title: '¿Estás Seguro?',
+        text: "¡No se puede revertir!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, Elimínalo'
+  }).then((result) => {
+      if (result.isConfirmed) {
+            this.proveedorService.eliminarProveedor(aux.idProveedor).subscribe(
+              (x) => {
+                Swal.fire('Mensaje',x.mensaje, 'success');
+                this.proveedorService.listaProveedorxnombre(this.filtro==""?"todos":this.filtro).subscribe(
+                        (x) => this.proveedores = x
+                );
+       
+              } 
+            );
+      }
+  })
+}
+
 }
