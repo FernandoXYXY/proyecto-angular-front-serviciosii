@@ -10,9 +10,19 @@ import { TokenService } from '../security/token.service';
 export class MenuComponent implements OnInit {
 
   isLogged = false;
+  isAdmin = false;
+  roles: Array<string> = [];
 
   constructor(private tokenService: TokenService) {
     console.log("MenuComponent >>> constructor >>> " + this.tokenService.getToken());
+    this.roles = this.tokenService.getAuthorities();
+    this.roles.forEach(element => {
+      if(element == "Administrador"){
+        this.isAdmin = true;
+      }else{
+        this.isAdmin = false;
+      }
+    });
   }
 
   ngOnInit() {

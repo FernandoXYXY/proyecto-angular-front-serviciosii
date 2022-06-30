@@ -55,7 +55,7 @@ const routes: Routes = [
   {path:"consultaPedido", component:ConsultaPedidoComponent},
   {path:"consultaComprobante", component:ConsultaComprobanteComponent},
 
-  {path:"registraPedido", component:TransaccionPedidoComponent},
+  {path:"registraPedidos", component:TransaccionPedidoComponent},
   {path:"registraComprobante", component:TransaccionComprobanteComponent},
 
   { path: 'login', component: LoginComponent },

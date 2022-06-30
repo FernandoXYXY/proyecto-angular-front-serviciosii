@@ -1,1 +1,201 @@
-<p>transaccion-pedido works!</p>
+<div class="container">
+    <div>
+
+        <form class="content" (ngSubmit)="ejecutarTransaccion()" [formGroup]="forms">
+
+
+            <div class="submit-form">
+
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h4 style="text-align: center;">REGISTRAR PEDIDO </h4>
+                    </div>
+                </div>
+                <div>
+                    <div class="row" style="margin-top: 2%">
+                    
+                        
+                        <div class="col-md-4">
+                            <label for="nroPedido">Nro de pedido:</label>
+                            <input type="text" class="form-control" name="nroPedido" id="idPedido" placeholder="Este valor es autogenerado" readonly />
+                        </div>
+
+                        <div class="col-md-8">
+                            <label for="entrega">Lugar de entrega</label>
+                            <input type="text" class="form-control" id="entrega" name="entrega" formControlName="validaLugar" [(ngModel)]="datosPedido.lugarEntrega" />
+                                <div *ngIf="submitted && forms.controls.validaLugar.errors" class="invalid">
+                                    <div *ngIf="forms.controls.validaLugar.errors.required">
+                                        Ingrese la descripción del reclamo
+                                    </div>
+                                    <div *ngIf="forms.controls.validaLugar.errors.pattern">
+                                        Solo letras y números (Min: 4 y Max: 255 caracteres)
+                                    </div>
+                                </div>
+                        </div>
+
+                        <div class="col-md-4 mt-4">
+                            <label for="fecha">Fecha de entrega</label>
+                            <input type="date" class="form-control" name="fecha" id="fecha" formControlName="validaFecha"  [(ngModel)]="datosPedido.fechaEntrega"/>
+                            <div *ngIf="submitted && forms.controls.validaFecha.errors" class="invalid">
+                                <div *ngIf="forms.controls.validaFecha.errors.required">
+                                    Seleccionar una fecha es obligatorio
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-8 mt-4">
+                            <label for="Pais">Cliente</label>
+                            <select class="registro1 form-control" name="cliente" id="cliente" formControlName="validaCliente" [(ngModel)]="datosPedido.cliente!.idCliente">
+                                <option value="-1">[Seleccione un cliente]</option>
+                                <option *ngFor="let aux of cliente" value="{{aux.idCliente}}">{{aux.nombres}}
+                                    {{aux.apellidos}}</option>
+                            </select>
+                            <div *ngIf="submitted && forms.controls.validaCliente.errors" class="invalid">
+                                <div *ngIf="forms.controls.validaCliente.errors.min">
+                                    Seleccionar un cliente es obligatorio
+                                </div>
+                            </div>
+                        </div>
+
+                    
+                    </div>
+
+
+                <div class="mt-4">
+                    <div class="row">
+
+                        <h5 class="col-md-6 mt-4"> Detalle del pedido:</h5>
+
+                        <div class="col-md-3 mt-4"></div>
+
+                        <div class="col-md-3 mt-4" style="padding-left: 8%;">
+                            <label for="id_btn_filtrar" class="text-white"></label>
+                            <button type="button" class="btn btn-primary" id="id_btn_filtrar" data-toggle='modal' data-target="#idModalRegistrar"
+                                >Agregar productos</button>
+                        </div>
+
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-12">
+                            <div class="content">
+            
+                                <table id="id_table" class="table">
+                                    <thead>
+                                        <tr class="thead-dark">
+                                            <th class="cambio">ID</th>
+                                            <th class="cambio">Producto</th>
+                                            <th class="cambio">Precio</th>
+                                            <th class="cambio">Cantidad</th>
+                                            <th class="cambio">Importe</th>
+                                            <th class="cambio">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="fondo" *ngFor="let aux2 of detallePedido">
+                                            <td class="cambio">{{ aux2.idProducto }}</td>
+                                            <td class="cambio">{{ aux2.descProducto }}</td>
+                                            <td class="cambio">{{ aux2.precio }}</td>
+                                            <td class="cambio">{{aux2.cantidad}}</td>
+                                            <td class="cambio">{{ aux2.importe }}</td>
+                                            
+                                                                          
+                                            <td class="cambio text-center"><button type="button" class="btn btn-danger"  (click)="eliminarItem(aux2)"><i class="bi bi-trash-fill"></i></button></td>
+                                            
+                                        </tr>
+                                    </tbody>
+                                </table>
+            
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4" >
+                        Total a pagar es : <input type="text" class="form-control" [value]="totalPagar"  readonly/>
+                    </div>
+                    <div class="mt-4 text-center" style="padding-left: 8%;">
+                        <label for="id_btn_" class="text-white"></label>
+                        <button  class="btn btn-success" id="id_btn_" 
+                        [disabled]="submitted && this.forms.invalid">Registrar pedido</button>
+                    </div>
+                </div>
+
+
+                </div>
+            </div>
+            </form>
+
+        
+
+
+        <div class="modal fade" id="idModalRegistrar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+            <div class="modal-dialog" style="max-width: 70%;">
+                <div class="modal-content">
+        
+                    <div class="modal-header">
+                        <h5 class="modal-title" style="color: white;" id="exampleModalLabel">Agregar Producto</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+        
+                    <div class="modal-body">
+                        <div class="container">
+                        <div class="row" style="margin-top: 3%">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr class="fondo">
+                                        <th class="cambio text-white" >ID</th>
+                                        <th class="cambio text-white" >Nombre</th>
+                                        <th class="cambio text-white" >Serie</th>
+                                        <th class="cambio text-white" >Fecha de Vigencia</th>
+                                        <th class="cambio text-white" >Stock</th>
+                                        <th class="cambio text-white" >Precio</th>
+                                        <th class="cambio text-white" >Marca</th>
+                                        <th class="cambio text-white" >País</th>
+                                        
+                                        <th class="text-center" >Acciones</th>
+                                        
+                
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="fondo" *ngFor="let aux of productos">
+                
+                
+                                        <td class="cambio">{{ aux.idProducto }}</td>
+                                        <td class="cambio">{{ aux.nombre }}</td>
+                                        <td class="cambio">{{ aux.serie }}</td>
+                                        <td class="cambio">{{aux.fechaVigencia}}</td>
+                                        <td class="cambio">{{ aux.stock }}</td>
+                                        <td class="cambio">{{aux.precio}}</td>
+                                        <td class="cambio">{{ aux.marca!.nombre}}</td>
+                                        <td class="cambio">{{ aux.pais!.nombre}}</td>
+                                                                          
+                                        <td class="cambio text-center"><button type="button" class="btn btn-success" (click)="agregar(aux)"> <i class="bi bi-cart4"></i></button></td>
+                                    </tr>
+                
+                
+                                </tbody>
+                
+                
+                            </table>
+                
+                
+                        </div>
+        
+                    </div>
+                </div>
+        
+        
+                </div>
+            </div>
+        </div>
+        
+
+
+    
+
+
+    </div>
+
+</div>

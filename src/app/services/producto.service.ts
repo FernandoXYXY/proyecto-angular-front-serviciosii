@@ -31,6 +31,10 @@ export class ProductoService {
     return this.http.get<Producto[]>(baseUrlProducto);
   }
 
+  listaProductoPedido(): Observable<Producto[]> {
+    return this.http.get<Producto[]>(baseUrlProducto+"/listarProductosT");
+  }
+
   listarProducto(nombre:string, serie:string, idMarca:number, idPais:number,estado:number):Observable<any> {
     const params = new HttpParams().set("nombre", nombre).set("serie", serie).set("idPais", idPais).set("idMarca",idMarca).set("estado", estado);  
     return this.http.get<any>(baseUrlProducto + "/listaproductoporparmetros", {params});
