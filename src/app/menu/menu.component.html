@@ -15,9 +15,9 @@
             </a>
 
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a routerLink="registraCliente" class="dropdown-item">Crear cliente</a>
+              <a routerLink="registraCliente" class="dropdown-item" *ngIf="isAdmin">Crear cliente</a>
               <a routerLink="consultaCliente" class="dropdown-item">Consulta cliente</a>
-              <a routerLink="crudCliente" class="dropdown-item">Crud cliente</a>
+              <a routerLink="crudCliente" class="dropdown-item" *ngIf="isAdmin">Crud cliente</a>
             </div>
           </li>
           <li class="nav-item dropdown">
@@ -27,9 +27,9 @@
             </a>
 
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a routerLink="registraMarca" class="dropdown-item">Crear Marca</a>
+              <a routerLink="registraMarca" class="dropdown-item" *ngIf="isAdmin">Crear Marca</a>
               <a routerLink="consultaMarca" class="dropdown-item">Consulta Marca</a>
-              <a routerLink="crudMarca" class="dropdown-item">Crud Marca</a>
+              <a routerLink="crudMarca" class="dropdown-item" *ngIf="isAdmin">Crud Marca</a>
             </div>
           </li>
           <li class="nav-item dropdown">
@@ -39,9 +39,9 @@
             </a>
 
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a routerLink="registraProducto" class="dropdown-item">Crear Producto</a>
+              <a routerLink="registraProducto" class="dropdown-item" *ngIf="isAdmin">Crear Producto</a>
               <a routerLink="consultaProducto" class="dropdown-item">Consulta Producto</a>
-              <a routerLink="crudProducto" class="dropdown-item">Crud Producto</a>
+              <a routerLink="crudProducto" class="dropdown-item" *ngIf="isAdmin">Crud Producto</a>
             </div>
           </li>
           <li class="nav-item dropdown">
@@ -51,9 +51,9 @@
             </a>
 
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a routerLink="registraProveedor" class="dropdown-item">Crear Proveedor</a>
+              <a routerLink="registraProveedor" class="dropdown-item" *ngIf="isAdmin">Crear Proveedor</a>
               <a routerLink="consultaProveedor" class="dropdown-item">Consulta Proveedor</a>
-              <a routerLink="crudProveedor" class="dropdown-item">Crud Proveedor</a>
+              <a routerLink="crudProveedor" class="dropdown-item" *ngIf="isAdmin">Crud Proveedor</a>
             </div>
           </li>
           <li class="nav-item dropdown">
@@ -63,9 +63,9 @@
             </a>
 
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a routerLink="registraReclamo" class="dropdown-item">Crear Reclamo</a>
+              <a routerLink="registraReclamo" class="dropdown-item" *ngIf="isAdmin">Crear Reclamo</a>
               <a routerLink="consultaReclamo" class="dropdown-item">Consulta Reclamo</a>
-              <a routerLink="crudReclamo" class="dropdown-item">Crud Reclamo</a>
+              <a routerLink="crudReclamo" class="dropdown-item" *ngIf="isAdmin">Crud Reclamo</a>
             </div>
           </li>
           <li class="nav-item dropdown">
@@ -75,9 +75,20 @@
             </a>
 
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a routerLink="registraSede" class="dropdown-item">Crear Sede</a>
+              <a routerLink="registraSede" class="dropdown-item" *ngIf="isAdmin">Crear Sede</a>
               <a routerLink="consultaSede" class="dropdown-item">Consulta Sede</a>
-              <a routerLink="crudSede" class="dropdown-item">Crud Sede</a>
+              <a routerLink="crudSede" class="dropdown-item" *ngIf="isAdmin">Crud Sede</a>
+            </div>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link  dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-expanded="false">
+              Pedido
+            </a>
+
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a routerLink="registraPedidos" class="dropdown-item">Realizar un pedido</a>
             </div>
           </li>
 

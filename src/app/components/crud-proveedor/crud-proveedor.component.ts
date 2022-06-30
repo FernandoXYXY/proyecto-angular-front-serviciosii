@@ -120,7 +120,13 @@ registra(){
       this.proveedorService.registraProveedor(this.proveedor).subscribe(
             (x) => {
               this.submitted = false;
-              alert(x.mensaje);
+              document.getElementById("btn_reg_cerrar")?.click();
+              Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: x.mensaje,
+                showConfirmButton: true
+              })
               this.proveedorService.consultaProveedor(this.filtro==""?"todos":this.filtro).subscribe(
                       (x) => this.proveedores = x
               );
@@ -176,7 +182,13 @@ actualiza(){
   this.proveedorService.actualizaProveedor(this.proveedor).subscribe(
         (x) => {
           this.submitted = false;
-          alert(x.mensaje);
+          document.getElementById("btn_act_cerrar")?.click();
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: x.mensaje,
+            showConfirmButton: true
+          })
           this.proveedorService.consultaProveedor(this.filtro==""?"todos":this.filtro).subscribe(
                   (x) => this.proveedores = x
           );
