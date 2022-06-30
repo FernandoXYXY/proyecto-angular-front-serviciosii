@@ -31,6 +31,7 @@ import { DatePipe } from '@angular/common';
 import { MenuComponent } from './menu/menu.component';
 import { IndexComponent } from './index/index.component';
 import { LoginComponent } from './components/auth/login.component';
+import { interceptorProvider } from './interceptors/prod-interceptor.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,7 +75,8 @@ import { LoginComponent } from './components/auth/login.component';
     AppRoutingModule
   ],
   providers: [
-    DatePipe
+    DatePipe,
+    interceptorProvider
   ],
   bootstrap: [AppComponent]
 })
